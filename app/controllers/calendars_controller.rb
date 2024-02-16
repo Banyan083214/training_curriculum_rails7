@@ -37,12 +37,12 @@ class CalendarsController < ApplicationController
       end
   
       days = {
-        :weekday => wdays[(today_wday + x) % 7], # 正しい曜日を取得するように修正
-        :month => (@todays_date + x).month,
-        :date => (@todays_date + x).day,
-        :plans => today_plans
+        weekday: wdays[(today_wday + x) % 7], # 正しい曜日を取得するように修正
+        month: (@todays_date + x).month,
+        date: (@todays_date + x).day,
+        plans: today_plans
       }
-      puts "DEBUG: days = #{days.inspect}"
+          puts "DEBUG: days = #{days.inspect}"
       @week_days.push(days)
     end
   end
