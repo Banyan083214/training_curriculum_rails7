@@ -1,3 +1,4 @@
+
 <%= form_with model: @plan, url: calendars_path, class: 'form' do |f| %>
   <%= f.label :日付を選択, class: 'label' %>
   <%= f.date_field :date, class: 'date-select' %>
@@ -6,19 +7,23 @@
   <%= f.submit '保存' %>
 <% end %>
 
+
 <div class='calendar'>
   <% @week_days.each do |day| %>
     <div class='item'>
       <div class='date'>
-        <%= day[:month] %>/<%= day[:date] %>
+        <%= day[:month] %>月<%= day[:date] %>日 <%= day[:weekday] %> <!-- 曜日を追加 -->
       </div>
       <ul class='content'>
-        <% if day[:plans].length != 0 %>
+        <% if day[:plans].present? %>
           <% day[:plans].each do |plan| %>
             <li class='plan-list'>・<%= plan %></li>
           <% end %>
+        <% else %>
+          <li class='plan-list'></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 </div>
+
